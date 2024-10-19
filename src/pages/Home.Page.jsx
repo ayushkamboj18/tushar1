@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Poster from "../components/Poster/Poster.Component";
 
 // HOC
 import DefaultlayoutHoc from "../layout/Default.layout";
@@ -48,20 +49,21 @@ const HomePage = () => {
         <EntertainmentCardSlider />
       </div>
 
-        <div className="mx-36 px-4 md:px-12 my-8">
-          <PosterSlider
+        <div className="mx-36 px-4 md:px-12 my-8 grid grid-cols-3 grid-rows-3 gap-48">
+          {/* <PosterSlider
             title="Recommended Movies"
-            slideShow={3} 
-            totalSlide={1}
             subtitle=""
             posters={recommendedMovies} // Only passing the first 3 movies
             isDark={false}
-          />
+          /> */}
+            {recommendedMovies.slice(0,18).map((each, index) => (
+              <Poster {...each} isDark={true} key={index} class={"h-[20rem] w-[20rem]"}/>
+            ))}
         </div>
 
 
-      <div className="bg-blue-950 py-12">
-        <div className="container mx-auto px-4 md:px-12 my-8 flex flex-col gap-3">
+      <div className="bg-blue-950 py-12 mt-48">
+        <div className="container mx-auto px-4 md:px-12 -scroll-my-10 flex flex-col gap-3">
           <div className="hidden md:flex">
             <img
               src="https://in.bmscdn.com/discovery-catalog/collections/tr:w-1440,h-120/premiere-rupay-banner-web-collection-202104230555.png"

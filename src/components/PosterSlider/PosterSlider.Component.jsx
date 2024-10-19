@@ -8,7 +8,7 @@ const PosterSlider = (props) => {
   const settings = {
     infinte: false,
     autoplay: false,
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
     initialSlide: 0,
     responsive: [

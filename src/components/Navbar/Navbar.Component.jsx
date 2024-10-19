@@ -3,9 +3,9 @@ import CustomModal from "../Modal/Modal.Component";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const apiKey = process.env.REACT_APP_OPENCAGE_API_KEY;
-
+const apiKey = process.env.REACT_APP_IPSTACK_KEY;
 function NavSm({ defaultLocation }) {
+  
   return (
     <>
       <div className="text-white flex items-center justify-between">
@@ -49,11 +49,13 @@ function NavLg({ defaultLocation }) {
 
             try {
               const response = await axios.get(
-                `https://api.opencagedata.com/geocode/v1/json?key=${apiKey}&language=en&q=${latitude}+${longitude}`
+                `https://api.ipstack.com/check?access_key=${apiKey}`
               );
 
-              const state = response.data.results[0].components.state;
-              setLocation(state || defaultLocation);
+              // const state = response?.data?.results[0].components.state;
+              // setLocation(state || defaultLocation);
+              setLocation(response.data.city)
+              
             } catch (error) {
               console.error("Error getting user location:", error);
               setLocation(defaultLocation);
